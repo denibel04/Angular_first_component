@@ -1,0 +1,20 @@
+.custom-card{
+    padding: 1rem;
+}
+
+.custom-card-header {
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 10px; 
+}
+
+.custom-card-header .ion-avatar img {
+    max-width: 100%; 
+}
+
+.title {
+    font-size: 2rem;
+    color: rgb(93, 0, 243);
+    font-weight: bold;
+}
+
