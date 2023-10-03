@@ -1,22 +1,29 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UserInfoFavClicked } from '../UserInfoFavClicked';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { User } from '../user';
+import { Router } from '@angular/router';
+
+export interface UserInfoFavClicked{
+  fav:boolean | undefined;
+}
+
 @Component({
   selector: 'app-user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss'],
 })
-export class UserInfoComponent implements OnInit {
-  @Input() user?: {
-    id: number;
-    nombre: string;
-    apellidos: string;
-    edad: number;
-    fav:boolean;
-  }
+export class UserInfoComponent  implements OnInit{
 
-  @Output() onFavClicked: EventEmitter<UserInfoFavClicked> = new EventEmitter<UserInfoFavClicked>();
+  
+  @Input() user:User | null=null;
 
-  constructor() {} 
+  @Output() onFavClicked:EventEmitter<UserInfoFavClicked> = new EventEmitter<UserInfoFavClicked>();
+  @Output() onCardClicked:EventEmitter<void> = new EventEmitter<void>();
+  @Output() onDeleteClicked:EventEmitter<void> = new EventEmitter<void>();
+  
+  constructor(
+    private router:Router
+  ) { }
+  
 
   ngOnInit() {}
 
@@ -26,6 +33,15 @@ export class UserInfoComponent implements OnInit {
     });
     event.stopPropagation();
     event.preventDefault();
-}
+  }
 
+  onCardClick(){
+    this.onCardClicked.emit();
+  }
+
+  onDeleteClick(event:any){
+    this.onDeleteClicked.emit();
+    event.stopPropagation();
+    event.preventDefault();
+  }
 }

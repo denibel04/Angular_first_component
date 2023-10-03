@@ -6,6 +6,9 @@
     <ion-card-title class="title">
       {{ user?.nombre | titlecase }} {{ user?.apellidos | slice: 0:1 | uppercase }}
     </ion-card-title>
+    <ion-button class="close-button" fill="clear" aria-label="Delete" (click)="onDeleteClick($event)">
+      <ion-icon slot="icon-only"  color="primary" name="trash" aria-hidden="true"></ion-icon>
+    </ion-button>
     <ion-button class="fav-button" fill="clear" aria-label="Favorite" (click)="onFavClick($event)">
       <ion-icon *ngIf="user?.fav" slot="icon-only"  color="danger" name="heart" aria-hidden="true"></ion-icon>
        <ion-icon *ngIf="!user?.fav" slot="icon-only"  color="medium" name="heart-outline" aria-hidden="true"></ion-icon>

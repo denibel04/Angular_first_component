@@ -15,7 +15,14 @@
 
   <div id="container">
     <div class="users">
-      <app-user-info *ngFor="let user of users$ | async" [user]="user" (onFavClicked)="onFavClicked(user, $event)"></app-user-info>
+      <app-user-info 
+      *ngFor="let user of users.users$ | async" 
+      [user]="user" 
+      (onCardClicked)="onCardClicked()" 
+      (onFavClicked)="onFavClicked(user, $event)"
+      (onDeleteClicked)="onDeleteClicked(user)"
+    >
+  </app-user-info>
     </div>
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
